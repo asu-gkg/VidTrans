@@ -6,6 +6,7 @@ import argparse
 import gpt_translator
 import copy
 import ctx
+from whisper.utils import get_writer
 
 
 def panic(err_msg):
@@ -37,7 +38,9 @@ def main(video_file):
     result = model.transcribe(video_file)
     print(result)
 
-    gpt_batch_translate(result)
+    translate_result = gpt_batch_translate(result)
+    writer = get_writer("srt", ".")  # get srt writer for the current directory
+    writer(translate_result, 'output.srt', {})  # add empty dictionary for 'options'
 
 
 if __name__ == '__main__':
