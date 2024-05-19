@@ -40,7 +40,8 @@ def main(video_file):
 
     translate_result = gpt_batch_translate(result)
     writer = get_writer("srt", ".")  # get srt writer for the current directory
-    writer(translate_result, 'output.srt', {})  # add empty dictionary for 'options'
+    output_file = video_file.replace(".mp4", "")
+    writer(translate_result, f'{output_file}.srt', {})  # add empty dictionary for 'options'
 
 
 if __name__ == '__main__':
