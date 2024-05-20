@@ -47,7 +47,7 @@ def main(video_file):
 if __name__ == '__main__':
     print("Hello, this is VidTrans.")
     parser = argparse.ArgumentParser(description="VidTrans: Video Transcription Tool")
-    parser.add_argument('--file', type=str, help='Path to the video file to be transcribed')
+    parser.add_argument('--file', type=str, required=True, help='Path to the video file to be transcribed')
 
     args = parser.parse_args()
     main(args.file)
